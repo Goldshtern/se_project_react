@@ -8,6 +8,7 @@
 .footer__content {
   display: flex;
   justify-content: space-between;
+  padding: 0;
 }
 
 .footer__content-name {
