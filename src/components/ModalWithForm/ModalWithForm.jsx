@@ -1,14 +1,15 @@
 import "./ModalWithForm.css";
+import closeBtn from "../../assets/cls-btn.svg";
 function ModalWithForm() {
   return (
     <div className="modal">
       <div className="modal__content">
         <h2 className="modal__title">New garment</h2>
-        <button type="button" className="modal__close-btn">
-          CLOSE
+        <button type="button" className="modal__close">
+          <img src={closeBtn} alt="close button" className="modal__close-btn" />
         </button>
         <form className="modal__form">
-          <label htmlFor="name" className="label__form">
+          <label htmlFor="name" className="modal__label-form">
             Name{" "}
             <input
               type="text"
@@ -17,7 +18,7 @@ function ModalWithForm() {
               placeholder="Name"
             />
           </label>
-          <label htmlFor="imageURL" className="label__form">
+          <label htmlFor="imageURL" className="modal__label-form">
             Image{" "}
             <input
               type="url"
