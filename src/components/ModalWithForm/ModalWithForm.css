@@ -12,6 +12,11 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+  visibility: hidden;
+}
+
+.modal__opened {
+  visibility: visible;
 }
 
 .modal__form {
