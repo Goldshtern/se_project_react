@@ -1,0 +1,54 @@
+.toggle {
+  display: flex;
+  position: relative;
+  left: 590px;
+}
+
+.toggle__checkbox {
+  width: 50px;
+  height: 30px;
+  border: 2px solid #000;
+  border-radius: 25px;
+  /*outline: none;*/
+  appearance: none;
+}
+
+.toggle__slider {
+  position: absolute;
+  border-radius: 20px;
+  width: 28px;
+  height: 28px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.toggle__slider-F {
+  left: 20px;
+  top: 1px;
+}
+
+.toggle__slider-C {
+  left: 2px;
+  top: 1px;
+}
+
+.toggle__temp-C {
+  position: absolute;
+  top: -13px;
+  left: 8px;
+  color: #fff;
+}
+
+.toggle__temp-F {
+  position: absolute;
+  top: -12px;
+  left: 32px;
+  color: #fff;
+}
+
+.toggle__active {
+  font-size: 16px;
+  color: #fff;
+}
