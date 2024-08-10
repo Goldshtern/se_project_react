@@ -32,21 +32,26 @@ function App() {
     setActiveModal("");
   };
 
+  //const handleToggleSwitchChange = () => {
+  //if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+  //if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+  //};
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
   };
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
+        console.log(filteredData);
         setWeatherData(filteredData);
       })
       .catch(console.error);
   }, []);
 
-  console.log(currentTemperatureUnit);
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider
