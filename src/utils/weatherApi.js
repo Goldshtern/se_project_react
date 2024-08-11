@@ -28,7 +28,6 @@ export const filterWeatherData = (data) => {
     F: Math.ceil(data.main.temp),
     C: Math.ceil((data.main.temp - 32) * 5) / 9,
   };
-  console.log(result.temp);
   result.type = getWeatherType(result.temp.F);
   result.condition = data.weather[0].main.toLowerCase();
   result.isDay = isDay(data.sys, Date.now());

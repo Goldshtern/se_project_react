@@ -8,7 +8,6 @@ import React, { useContext } from "react";
 function Main({ weatherData, handleCardClick }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherData?.temp?.[currentTemperatureUnit] || 999;
-  console.log(temp);
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
