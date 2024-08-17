@@ -90,7 +90,7 @@ function App() {
               element={
                 <Main
                   weatherData={weatherData}
-                  handleCardClick={handleCardClick}
+                  onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                 />
               }
