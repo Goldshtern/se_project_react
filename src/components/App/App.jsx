@@ -4,14 +4,14 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+//import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { getItems } from "../../utils/api";
+import { getItems, postItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -47,8 +47,18 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  const handleAddItemSubmit = (values) => {
-    console.log(values);
+  //const handleAddItemSubmit = (values) => {
+  //console.log(values);
+  //};
+
+  const handleAddItemSubmit = (item) => {
+    postItems(item.name, item.imageUrl, item.weather)
+      .then((newCard) => {
+        setClothingItems([newCard, ...clothingItems]);
+        console.log(setClothingItems([newCard, ...clothingItems]));
+        closeActiveModal();
+      })
+      .catch((err) => console.error("Error submitting:", err));
   };
 
   useEffect(() => {
@@ -63,12 +73,10 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log(data);
         setClothingItems(data);
       })
       .catch(console.error);
   }, []);
-
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider
