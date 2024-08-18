@@ -30,3 +30,12 @@ function postItems(name, imageUrl, weather) {
 }
 
 export { postItems };
+
+function deleteItems(item) {
+  return fetch(`${baseUrl}/items/${item._id}`, {
+    method: "DELETE",
+    headers: headers,
+  }).then(checkResponse);
+}
+
+export { deleteItems };

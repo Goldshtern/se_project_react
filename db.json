@@ -13,12 +13,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e"
     },
     {
-      "_id": 2,
-      "name": "Cap",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591"
-    },
-    {
       "_id": 3,
       "name": "Coat",
       "weather": "cold",
@@ -106,45 +100,6 @@
       "name": "efref",
       "imageUrl": "https://img.freepik.com/free-vector/hat-red-yellow-color_1308-102169.jpg?t=st=1723633309~exp=1723636909~hmac=365a38d478c9fea9e79ab46514bd59c8afdfec57529890c1cd4a8a98240bd068&w=1800",
       "weather": "hot",
-      "_id": 17
-    },
-    {
-      "name": "asdadafdafda",
-      "imageUrl": "https://img.freepik.com/free-vector/hat-red-yellow-color_1308-102169.jpg?t=st=1723633309~exp=1723636909~hmac=365a38d478c9fea9e79ab46514bd59c8afdfec57529890c1cd4a8a98240bd068&w=1800",
-      "weather": "warm",
-      "_id": 18
-    },
-    {
-      "_id": 19
-    },
-    {
-      "_id": 20
-    },
-    {
-      "_id": 21
-    },
-    {
-      "_id": 22
-    },
-    {
-      "_id": 23
-    },
-    {
-      "_id": 24
-    },
-    {
-      "_id": 25
-    },
-    {
-      "name": "nnnnnn",
-      "imageUrl": "https://img.freepik.com/free-vector/hat-red-yellow-color_1308-102169.jpg?t=st=1723633309~exp=1723636909~hmac=365a38d478c9fea9e79ab46514bd59c8afdfec57529890c1cd4a8a98240bd068&w=1800",
-      "weather": "hot",
-      "_id": 26
-    },
-    {
-      "name": "efref",
-      "imageUrl": "https://img.freepik.com/free-vector/hat-red-yellow-color_1308-102169.jpg?t=st=1723633309~exp=1723636909~hmac=365a38d478c9fea9e79ab46514bd59c8afdfec57529890c1cd4a8a98240bd068&w=1800",
-      "weather": "hot",
       "_id": 27
     },
     {
@@ -152,12 +107,6 @@
       "imageUrl": "https://static4.depositphotos.com/1000261/339/i/600/depositphotos_3394871-stock-photo-red-baseball-cap.jpg",
       "weather": "hot",
       "_id": 28
-    },
-    {
-      "name": "ALEKS",
-      "imageUrl": "https://static4.depositphotos.com/1000261/339/i/600/depositphotos_3394871-stock-photo-red-baseball-cap.jpg",
-      "weather": "cold",
-      "_id": 29
     }
   ]
 }

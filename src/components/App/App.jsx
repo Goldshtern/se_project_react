@@ -11,7 +11,7 @@ import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { getItems, postItems } from "../../utils/api";
+import { getItems, postItems, deleteItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -47,10 +47,6 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  //const handleAddItemSubmit = (values) => {
-  //console.log(values);
-  //};
-
   const handleAddItemSubmit = (item) => {
     postItems(item.name, item.imageUrl, item.weather)
       .then((newCard) => {
@@ -59,6 +55,11 @@ function App() {
         closeActiveModal();
       })
       .catch((err) => console.error("Error submitting:", err));
+  };
+
+  const handleDeleteItem = (item) => {
+    console.log(item);
+    deleteItems(item);
   };
 
   useEffect(() => {
@@ -118,6 +119,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          handleDeleteItem={handleDeleteItem}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
