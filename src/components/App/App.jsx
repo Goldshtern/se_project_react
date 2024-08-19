@@ -59,7 +59,15 @@ function App() {
 
   const handleDeleteItem = (item) => {
     console.log(item);
-    deleteItems(item);
+    deleteItems(item)
+      .then((res) => {
+        const newClothingItems = clothingItems.filter(
+          (cardItem) => cardItem._id !== item._id
+        );
+        setClothingItems(newClothingItems);
+        closeActiveModal();
+      })
+      .catch((e) => console.error(e));
   };
 
   useEffect(() => {
