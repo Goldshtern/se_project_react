@@ -36,14 +36,14 @@
 .toggle__temp-C {
   position: absolute;
   top: -16px;
-  left: 30px;
+  left: 9px;
   color: #fff;
 }
 
 .toggle__temp-F {
   position: absolute;
   top: -16px;
-  left: 9px;
+  left: 30px;
   color: #fff;
 }
 

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./ToggleSwitch.css";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
@@ -23,14 +23,14 @@ const ToggleSwitch = () => {
       ></span>
       <p
         className={`toggle__temp-C ${
-          currentTemperatureUnit === "C" && "toggle__active"
+          currentTemperatureUnit === "F" && "toggle__active"
         }`}
       >
         C
       </p>
       <p
         className={`toggle__temp-F ${
-          currentTemperatureUnit === "F" && "toggle__active"
+          currentTemperatureUnit === "C" && "toggle__active"
         }`}
       >
         F
