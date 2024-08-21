@@ -2,7 +2,8 @@
   position: relative;
   display: flex;
   justify-content: center;
-  width: 323px;
+  max-width: 323px;
+  max-height: 323px;
   font-family: "Cabinet Grotesk", sans-serif;
 }
 
