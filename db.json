@@ -101,6 +101,12 @@
       "imageUrl": "",
       "weather": "",
       "_id": 18
+    },
+    {
+      "name": "Sun",
+      "imageUrl": "https://pretavoir.co.uk/cdn/shop/products/ray-ban-aviator-rb3025-112-4l-polarised-hd-1.jpg?v=1611919304",
+      "weather": "hot",
+      "_id": 19
     }
   ]
 }
