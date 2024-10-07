@@ -11,6 +11,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { getItems, postItems, deleteItems } from "../../utils/api";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -124,6 +125,7 @@ function App() {
           onClose={closeActiveModal}
           handleDeleteItem={handleDeleteItem}
         />
+        <RegisterModal activeModal={RegisterModal} onClose={closeActiveModal} />
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );
