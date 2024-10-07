@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -12,6 +12,7 @@ import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { getItems, postItems, deleteItems } from "../../utils/api";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -126,6 +127,7 @@ function App() {
           handleDeleteItem={handleDeleteItem}
         />
         <RegisterModal activeModal={RegisterModal} onClose={closeActiveModal} />
+        <LoginModal activeModal={LoginModal} onClose={closeActiveModal} />
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

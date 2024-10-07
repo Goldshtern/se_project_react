@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./RegisterModal.css";
+import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal({ onClose, isOpen, handleSubmit }) {
+function LoginModal({ onClose, isOpen, handleSubmit }) {
   return (
     <ModalWithForm
       title="Sign Up"
@@ -33,29 +33,8 @@ function RegisterModal({ onClose, isOpen, handleSubmit }) {
           //value={password}
         />
       </label>
-      <label htmlFor="name" className="modal__label-form">
-        Name
-        <input
-          type="text"
-          className="modal__input"
-          id="name"
-          placeholder="Name"
-          name="name"
-        />
-      </label>
-      <label htmlFor="avatarUrl" className="modal__label-form">
-        Avatar URL{" "}
-        <input
-          type="link"
-          className="modal__input"
-          id="avatarUrl"
-          placeholder="Avatar Url"
-          name="avatarUrl"
-          //value={avatarUrl}
-        />
-      </label>
     </ModalWithForm>
   );
 }
 
-export default RegisterModal;
+export default LoginModal;
