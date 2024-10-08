@@ -41,6 +41,7 @@ function RegisterModal({ onClose, isOpen, handleSubmit }) {
           id="name"
           placeholder="Name"
           name="name"
+          //{name}
         />
       </label>
       <label htmlFor="avatarUrl" className="modal__label-form">
