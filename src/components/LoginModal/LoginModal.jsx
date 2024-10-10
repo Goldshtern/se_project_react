@@ -4,8 +4,8 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const Login = ({ onClose, isOpen, handleSubmit }) => {
   const [data, setData] = useState({
-    name: "",
     email: "",
+    password: "",
   });
 
   const handleChange = (e) => {

@@ -92,6 +92,14 @@ function App() {
       .catch(console.error);
   };
 
+  const handleLogin = ({ email, password }) => {
+    if (!email || !password) {
+      return;
+    }
+
+    auth.signIn({ email, password }).then;
+  };
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
