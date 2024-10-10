@@ -14,6 +14,7 @@ import { getItems, postItems, deleteItems } from "../../utils/api";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../../utils/ProtectedRoute";
+import * as auth from "../../utils/auth";
 
 function App() {
   const [weatherData, setWeatherData] = useState({

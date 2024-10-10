@@ -2,7 +2,20 @@ import React, { useState } from "react";
 import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal({ onClose, isOpen, handleSubmit }) {
+const Login = ({ onClose, isOpen, handleSubmit }) => {
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   return (
     <ModalWithForm
       title="Sign Up"
@@ -12,29 +25,31 @@ function LoginModal({ onClose, isOpen, handleSubmit }) {
       onSubmit={handleSubmit}
     >
       <label htmlFor="email" className="modal__label-form">
-        Email
+        Email*{" "}
         <input
           type="email"
           className="modal__input"
           id="email"
           placeholder="Email"
           name="email"
-          //value={email}
+          value={data.email}
+          onChange={handleChange}
         />
       </label>
       <label htmlFor="password" className="modal__label-form">
-        Password *
+        Password*{" "}
         <input
           type="text"
           className="modal__input"
           id="password"
           placeholder="Password"
           name="password"
-          //value={password}
+          value={data.password}
+          onChange={handleChange}
         />
       </label>
     </ModalWithForm>
   );
-}
+};
 
-export default LoginModal;
+export default Login;
