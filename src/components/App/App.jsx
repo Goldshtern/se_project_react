@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -26,6 +26,15 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    avatarUrl: "",
+  });
+  const [currentUser, setCurrentUser] = useState({ email: "", password: "" });
+
+  const navigate = useNavigate();
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -67,6 +76,19 @@ function App() {
         closeActiveModal();
       })
       .catch((e) => console.error(e));
+  };
+
+  const handleRegistration = ({ name, email, avatarUrl, password }) => {
+    auth
+      .signUp({ name, email, password, avatarUrl })
+      .then(() => {
+        setUserData(name, email, password, avatarUrl);
+        setCurrentUser(email, password);
+        setIsLoggedIn(true);
+        closeActiveModal();
+        navigate("/profile");
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -130,7 +152,11 @@ function App() {
           onClose={closeActiveModal}
           handleDeleteItem={handleDeleteItem}
         />
-        <RegisterModal activeModal={RegisterModal} onClose={closeActiveModal} />
+        <RegisterModal
+          activeModal={RegisterModal}
+          onClose={closeActiveModal}
+          handleRegistration={handleRegistration}
+        />
         <LoginModal activeModal={LoginModal} onClose={closeActiveModal} />
       </CurrentTemperatureUnitContext.Provider>
     </div>

@@ -3,7 +3,7 @@ import { checkResponse } from "./api";
 const baseUrl = "http://localhost:3001";
 const headers = { "Content-Type": "application/json" };
 
-function signup() {
+function signUp() {
   return fetch(`${baseUrl}/profile`, {
     method: "POST",
     headers,
@@ -11,9 +11,9 @@ function signup() {
   }).then(checkResponse);
 }
 
-export { signup };
+export { signUp };
 
-function signin() {
+function signIn() {
   return fetch(`${baseUrl}/profile`, {
     method: "POST",
     headers,
@@ -21,4 +21,4 @@ function signin() {
   }).then(checkResponse);
 }
 
-export { signin };
+export { signIn };
