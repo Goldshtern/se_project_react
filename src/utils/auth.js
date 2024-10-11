@@ -22,3 +22,15 @@ function signIn() {
 }
 
 export { signIn };
+
+const getUserInfo = (token) => {
+  return fetch(`${baseUrl}/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};
+
+export { getUserInfo };
