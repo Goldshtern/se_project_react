@@ -14,6 +14,7 @@ import { getItems, postItems, deleteItems } from "../../utils/api";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../../utils/ProtectedRoute";
+import { setToken, getToken } from "../../utils/token";
 import * as auth from "../../utils/auth";
 
 function App() {
@@ -97,7 +98,19 @@ function App() {
       return;
     }
 
-    auth.signIn({ email, password }).then;
+    auth
+      .signIn({ email, password })
+      .then((data) => {
+        console.log("this is the data", data);
+        if (data.token) {
+          setToken(data.token);
+          setCurrentUser(userData);
+          setIsLoggedIn(true);
+          closeActiveModal();
+          navigate("/profile");
+        }
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -166,7 +179,11 @@ function App() {
           onClose={closeActiveModal}
           handleRegistration={handleRegistration}
         />
-        <LoginModal activeModal={LoginModal} onClose={closeActiveModal} />
+        <LoginModal
+          activeModal={LoginModal}
+          onClose={closeActiveModal}
+          handleLogin={handleLogin}
+        />
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );
