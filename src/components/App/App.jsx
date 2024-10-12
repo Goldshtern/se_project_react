@@ -16,6 +16,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../../utils/ProtectedRoute";
 import { setToken, getToken } from "../../utils/token";
 import * as auth from "../../utils/auth";
+//import * as api from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -129,6 +130,23 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    const jwt = getToken();
+
+    if (!jwt) {
+      return;
+    }
+    auth
+      .getUserInfo(jwt)
+      .then((user) => {
+        setIsLoggedIn(true);
+        setCurrentUser(user.data);
+        navigate("/profile");
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider
@@ -177,11 +195,12 @@ function App() {
         <RegisterModal
           activeModal={RegisterModal}
           onClose={closeActiveModal}
-          handleRegistration={handleRegistration}
+          onSubmit={handleRegistration}
         />
         <LoginModal
           activeModal={LoginModal}
           onClose={closeActiveModal}
+          onSubmit={handleLogin}
           handleLogin={handleLogin}
         />
       </CurrentTemperatureUnitContext.Provider>
