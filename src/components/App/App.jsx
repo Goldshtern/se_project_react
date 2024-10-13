@@ -102,6 +102,10 @@ function App() {
     setActiveModal("");
   };
 
+  const navigateToLogin = () => {
+    setActiveModal("login");
+  };
+
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
@@ -201,6 +205,7 @@ function App() {
             activeModal={RegisterModal}
             onClose={closeActiveModal}
             onSubmit={handleRegistration}
+            navigateToLogin={navigateToLogin}
           />
           <LoginModal
             activeModal={LoginModal}

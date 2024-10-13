@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const Register = ({ onClose, isOpen, handleSubmit }) => {
+const Register = ({ onClose, isOpen, handleSubmit, navigateToLogin }) => {
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
     avatarUrl: "",
   });
+
+  const isFormValid = () => {
+    return data.email && data.password && data.name && data.avatar;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,6 +78,22 @@ const Register = ({ onClose, isOpen, handleSubmit }) => {
           onChange={handleChange}
         />
       </label>
+      <div className="register__button-container">
+        <button
+          type="submit"
+          className={`register__link ${isFormValid() ? "active" : ""}`}
+        >
+          Sign up
+        </button>
+        <button
+          type="button"
+          className="register__login_link"
+          to="login"
+          onClick={navigateToLogin}
+        >
+          Sign in
+        </button>
+      </div>
     </ModalWithForm>
   );
 };
