@@ -87,11 +87,11 @@ const Register = ({ onClose, isOpen, handleSubmit, navigateToLogin }) => {
         </button>
         <button
           type="button"
-          className="register__login_link"
+          className="register__login-link"
           to="login"
           onClick={navigateToLogin}
         >
-          Sign in
+          or Log In
         </button>
       </div>
     </ModalWithForm>
