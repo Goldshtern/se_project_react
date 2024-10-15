@@ -41,7 +41,7 @@ function App() {
   const navigate = useNavigate();
 
   const handleRegistration = ({ name, email, avatarUrl, password }) => {
-    auth
+    return auth
       .signUp({ name, email, password, avatarUrl })
       .then(() => {
         setUserData(name, email, password, avatarUrl);
@@ -102,11 +102,11 @@ function App() {
     setActiveModal("");
   };
 
-  const navigateToLogin = () => {
+  const handleLoginClick = () => {
     setActiveModal("login");
   };
 
-  const navigateToSignUp = () => {
+  const handleSignUpClick = () => {
     setActiveModal("register");
   };
 
@@ -166,7 +166,14 @@ function App() {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <div className="page__content">
-            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+            <Header
+              handleAddClick={handleAddClick}
+              weatherData={weatherData}
+              isLoggedIn={isLoggedIn}
+              handleSignUpClick={handleSignUpClick}
+              handleLoginClick={handleLoginClick}
+              onClose={closeActiveModal}
+            />
             <Routes>
               <Route
                 path="/"
@@ -209,13 +216,13 @@ function App() {
             activeModal={RegisterModal}
             onClose={closeActiveModal}
             onSubmit={handleRegistration}
-            navigateToLogin={navigateToLogin}
+            handleLoginClick={handleLoginClick}
           />
           <LoginModal
             activeModal={LoginModal}
             onClose={closeActiveModal}
             handleLogin={handleLogin}
-            navigateToSignUp={navigateToSignUp}
+            handleSignUpClick={handleSignUpClick}
           />
         </CurrentTemperatureUnitContext.Provider>
       </div>

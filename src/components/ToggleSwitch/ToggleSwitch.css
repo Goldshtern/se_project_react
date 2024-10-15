@@ -1,9 +1,8 @@
 .toggle {
   display: flex;
   position: relative;
-  left: 620px;
+  left: 10px;
   margin-right: 20px;
-  top: 4px;
 }
 
 .toggle__checkbox {

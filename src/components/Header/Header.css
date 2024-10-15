@@ -1,40 +1,130 @@
 .header {
-  position: relative;
   display: flex;
-  padding: 32px 0px 28px;
-  font-family: "Cabinet Grotesk", sans-serif;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 0 47px;
+  font-family: "CabinetGrotesk-Bold";
   font-size: 20px;
+  line-height: 1.2;
   font-weight: 700;
-  line-height: 24px;
+  background-color: #f3f3f3;
+}
+
+.header__link {
+  text-decoration: none;
+  color: black;
+}
+
+.header__logo-and-date {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__temp-and-user {
+  display: flex;
+  flex-direction: row;
 }
 
 .header__logo {
-  margin-right: 10px;
+  margin-right: 24px;
+}
+
+.header__add-clothes-button {
+  margin: 0 20px 0 auto;
+  font-weight: 700;
+  border: none;
+  background: none;
+}
+
+.header__add_button_hidden {
+  display: none;
+}
+
+.header__add-clothes-button:hover:hover {
+  cursor: pointer;
 }
 
 .header__date-and-location {
-  margin: 10px;
-  font-weight: 550;
-}
-
-.header__add-clothes-btn {
-  margin: 6px 20px 0px 20px;
-  position: absolute;
-  right: 220px;
-  border: none;
-}
-.header__link {
-  text-decoration: none;
-  color: #000;
+  margin: 0;
 }
 
 .header__user-container {
-  position: absolute;
-  right: 0;
   display: flex;
   align-items: center;
   gap: 12px;
 }
-.header__username {
+
+.header__register {
+  margin: 0 20px 0 auto;
+  font-weight: 700;
+  border: none;
+  background: none;
+}
+
+.header__register:hover {
+  cursor: pointer;
+}
+
+.header__login {
+  margin: 0 20px 0 auto;
+  font-weight: 700;
+  border: none;
+  background: none;
+}
+
+.header__login:hover {
+  cursor: pointer;
+}
+
+.header__avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+}
+
+.header__user-name {
+  font-family: "CabinetGrotesk-Medium";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  text-align: left;
   margin: 0;
+}
+
+.header__link {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 330px) and (max-width: 530px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .header__logo {
+    margin-right: 12px;
+  }
+
+  .header__logo-and-date {
+    padding: 20px 0;
+    border-bottom: 2px solid;
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .header__date-and-location {
+    font-size: 16px;
+  }
+
+  .header__temp-and-user {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  .header__user-name {
+    font-size: 16px;
+  }
 }
