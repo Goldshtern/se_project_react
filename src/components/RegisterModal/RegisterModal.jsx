@@ -2,13 +2,22 @@ import React, { useState } from "react";
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const Register = ({ onClose, isOpen, handleSubmit, navigateToLogin }) => {
+const Register = ({
+  onClose,
+  isOpen,
+  handleRegistration,
+  handleLoginClick,
+}) => {
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
     avatarUrl: "",
   });
+
+  if (!isOpen) {
+    return null;
+  }
 
   const isFormValid = () => {
     return data.email && data.password && data.name && data.avatar;
@@ -20,6 +29,11 @@ const Register = ({ onClose, isOpen, handleSubmit, navigateToLogin }) => {
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleRegistration(data);
   };
 
   return (
@@ -89,7 +103,7 @@ const Register = ({ onClose, isOpen, handleSubmit, navigateToLogin }) => {
           type="button"
           className="register__login-link"
           to="login"
-          onClick={navigateToLogin}
+          onClick={handleLoginClick}
         >
           or Log In
         </button>
