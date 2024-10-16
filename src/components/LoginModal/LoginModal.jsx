@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const Login = ({ onClose, isOpen, handleSubmit, navigateToSignUp }) => {
+const Login = ({ onClose, isOpen, handleLogin, handleSignUpClick }) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -18,6 +18,12 @@ const Login = ({ onClose, isOpen, handleSubmit, navigateToSignUp }) => {
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin(data);
+    console.log(handleSubmit);
   };
 
   return (
@@ -63,7 +69,7 @@ const Login = ({ onClose, isOpen, handleSubmit, navigateToSignUp }) => {
           type="button"
           className="login__login-link"
           to="login"
-          onClick={navigateToSignUp}
+          onClick={handleSignUpClick}
         >
           or Sign Up
         </button>
