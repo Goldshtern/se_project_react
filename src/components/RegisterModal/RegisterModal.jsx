@@ -15,9 +15,9 @@ const Register = ({
     avatarUrl: "",
   });
 
-  if (!isOpen) {
-    return null;
-  }
+  //if (!isOpen) {
+  //return null;
+  //}
 
   const isFormValid = () => {
     return data.email && data.password && data.name && data.avatar;

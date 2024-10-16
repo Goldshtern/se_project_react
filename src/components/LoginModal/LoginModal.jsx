@@ -28,8 +28,7 @@ const Login = ({ onClose, isOpen, handleLogin, handleSignUpClick }) => {
 
   return (
     <ModalWithForm
-      title="Sign Up"
-      buttonText="Sign Up"
+      title="Login"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
