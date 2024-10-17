@@ -212,18 +212,22 @@ function App() {
             onClose={closeActiveModal}
             handleDeleteItem={handleDeleteItem}
           />
-          <RegisterModal
-            activeModal={RegisterModal}
-            onClose={closeActiveModal}
-            onSubmit={handleRegistration}
-            handleLoginClick={handleLoginClick}
-          />
-          <LoginModal
-            activeModal={LoginModal}
-            onClose={closeActiveModal}
-            handleLogin={handleLogin}
-            handleSignUpClick={handleSignUpClick}
-          />
+          {activeModal === "register" && (
+            <RegisterModal
+              isOpen={true}
+              onClose={closeActiveModal}
+              onSubmit={handleRegistration}
+              handleLoginClick={handleLoginClick}
+            />
+          )}
+          {activeModal === "login" && (
+            <LoginModal
+              isOpen={true}
+              onClose={closeActiveModal}
+              handleLogin={handleLogin}
+              handleSignUpClick={handleSignUpClick}
+            />
+          )}
         </CurrentTemperatureUnitContext.Provider>
       </div>
     </CurrentUserContext.Provider>
