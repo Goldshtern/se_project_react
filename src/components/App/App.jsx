@@ -30,13 +30,18 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({
+  //const [userData, setUserData] = useState({
+  //name: "",
+  //email: "",
+  //password: "",
+  //avatarUrl: "",
+  //});
+  const [currentUser, setCurrentUser] = useState({
     name: "",
     email: "",
-    password: "",
     avatarUrl: "",
+    _id: "",
   });
-  const [currentUser, setCurrentUser] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
 
@@ -45,9 +50,9 @@ function App() {
       .signUp({ name, email, password, avatarUrl })
       .then(() => {
         setUserData(name, email, password, avatarUrl);
-        setCurrentUser(email, password);
-        setIsLoggedIn(true);
-        closeActiveModal();
+        //setCurrentUser(email, password);
+        //setIsLoggedIn(true);
+        //closeActiveModal();
         navigate("/profile");
       })
       .catch(console.error);
@@ -216,7 +221,7 @@ function App() {
             <RegisterModal
               isOpen={true}
               onClose={closeActiveModal}
-              onSubmit={handleRegistration}
+              handleRegistration={handleRegistration}
               handleLoginClick={handleLoginClick}
             />
           )}

@@ -20,7 +20,7 @@ const Register = ({
   //}
 
   const isFormValid = () => {
-    return data.email && data.password && data.name && data.avatar;
+    return data.email && data.password && data.name && data.avatarUrl;
   };
 
   const handleChange = (e) => {
