@@ -34,7 +34,6 @@ const Register = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleRegistration(data);
-    console.log(handleSubmit);
   };
 
   return (

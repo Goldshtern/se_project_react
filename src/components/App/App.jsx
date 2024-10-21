@@ -45,15 +45,45 @@ function App() {
 
   const navigate = useNavigate();
 
-  const handleRegistration = ({ name, email, avatarUrl, password }) => {
+  //const handleRegistration = ({ name, email, avatarUrl, password }) => {
+  //return auth
+  //.signUp({ name, email, password, avatarUrl })
+  //.then(() => {
+  //setUserData(name, email, password, avatarUrl);
+  //setCurrentUser(email, password);
+  //setIsLoggedIn(true);
+  //closeActiveModal();
+  //navigate("/profile");
+  //})
+  //.catch(console.error);
+  //};
+
+  //const handleLogin = ({ email, password }) => {
+  //if (!email || !password) {
+  //return;
+  //}
+
+  //auth
+  //.signIn({ email, password })
+  //.then((data) => {
+  //console.log("this is the data", data);
+  //if (data.token) {
+  //setToken(data.token);
+  //setCurrentUser(userData);
+  // setIsLoggedIn(true);
+  //closeActiveModal();
+  //navigate("/profile");
+  //}
+  //})
+  //.catch(console.error);
+  //};
+
+  const handleRegistration = ({ name, avatarUrl, email, password }) => {
     return auth
-      .signUp({ name, email, password, avatarUrl })
+      .signUp({ name, avatarUrl, email, password })
       .then(() => {
-        setUserData(name, email, password, avatarUrl);
-        //setCurrentUser(email, password);
-        //setIsLoggedIn(true);
-        //closeActiveModal();
-        navigate("/profile");
+        handleLogin({ email, password });
+        closeActiveModal();
       })
       .catch(console.error);
   };
@@ -63,19 +93,24 @@ function App() {
       return;
     }
 
-    auth
+    return auth
       .signIn({ email, password })
       .then((data) => {
-        console.log("this is the data", data);
+        console.log(data);
         if (data.token) {
           setToken(data.token);
-          setCurrentUser(userData);
-          setIsLoggedIn(true);
-          closeActiveModal();
-          navigate("/profile");
+          auth.getUserInfo(data.token).then((userData) => {
+            setCurrentUser(userData);
+            setIsLoggedIn(true);
+            localStorage.setItem("jwt", data.token);
+            closeActiveModal();
+            navigate("/profile");
+          });
         }
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error("Login failed", err);
+      });
   };
 
   useEffect(() => {
