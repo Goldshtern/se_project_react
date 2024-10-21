@@ -30,12 +30,12 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  //const [userData, setUserData] = useState({
-  //name: "",
-  //email: "",
-  //password: "",
-  //avatarUrl: "",
-  //});
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    avatarUrl: "",
+  });
   const [currentUser, setCurrentUser] = useState({
     name: "",
     email: "",

@@ -1,7 +1,7 @@
 import "./ItemModal.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
-import closeBtn from "../../assets/cls-btn.svg";
+//import closeBtn from "../../assets/cls-btn.svg";
 
 function ItemModal({ activeModal, onClose, card, handleDeleteItem }) {
   const currentUser = useContext(CurrentUserContext);
@@ -16,12 +16,15 @@ function ItemModal({ activeModal, onClose, card, handleDeleteItem }) {
   const itemDeleteButtonClassName = `modal__delete-btn ${
     isOwn ? "modal__delete-btn_visible" : "modal__delete-btn_hidden"
   }`;
+
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
-        <button onClick={onClose} type="button" className="modal__close">
-          <img src={closeBtn} alt="close button" className="modal__close-btn" />
-        </button>
+        <button
+          onClick={onClose}
+          type="button"
+          className="modal__close"
+        ></button>
         <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
@@ -32,6 +35,7 @@ function ItemModal({ activeModal, onClose, card, handleDeleteItem }) {
             className={itemDeleteButtonClassName}
             onClick={handleDeleteClick}
           >
+            {" "}
             Delete item
           </button>
         </div>
