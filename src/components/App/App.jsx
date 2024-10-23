@@ -17,7 +17,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { setToken, getToken } from "../../utils/token";
 import * as auth from "../../utils/auth";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-//import * as api from "../../utils/api";
+import * as api from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -127,7 +127,7 @@ function App() {
         navigate("/profile");
       })
       .catch(console.error);
-  }, []);
+  }, [navigate]);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -159,7 +159,8 @@ function App() {
   const handleAddItemSubmit = (item) => {
     const jwt = getToken();
 
-    postItems(item.name, item.imageUrl, item.weather, jwt)
+    return api
+      .postItems(item.name, item.imageUrl, item.weather, jwt)
       .then((newCard) => {
         setClothingItems([newCard, ...clothingItems]);
         console.log(setClothingItems([newCard, ...clothingItems]));
@@ -169,9 +170,10 @@ function App() {
   };
 
   const handleDeleteItem = (item) => {
-    const token = localStorage.getItem("jwt");
-    console.log(item);
-    deleteItems(item, token)
+    const jwt = getToken();
+
+    api
+      .deleteItems(item, jwt)
       .then((res) => {
         const newClothingItems = clothingItems.filter(
           (cardItem) => cardItem._id !== item._id
@@ -192,8 +194,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getItems()
+    api
+      .getItems()
       .then((data) => {
+        console.log(data);
         setClothingItems(data);
       })
       .catch(console.error);

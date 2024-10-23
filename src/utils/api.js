@@ -1,5 +1,4 @@
 const baseUrl = "http://localhost:3001";
-const headers = { "Content-Type": "application/json" };
 
 function checkResponse(res) {
   if (res.ok) {
@@ -12,16 +11,19 @@ export { checkResponse };
 
 function getItems() {
   return fetch(`${baseUrl}/items`, {
-    headers: headers,
+    headers: { "Content-Type": "application/json" },
   }).then(checkResponse);
 }
 
 export { getItems };
 
-function postItems(name, imageUrl, weather) {
+function postItems({ name, imageUrl, weather }, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: headers,
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       name,
       imageUrl,
@@ -32,10 +34,13 @@ function postItems(name, imageUrl, weather) {
 
 export { postItems };
 
-function deleteItems(item) {
+function deleteItems(item, token) {
   return fetch(`${baseUrl}/items/${item._id}`, {
     method: "DELETE",
-    headers: headers,
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
   }).then(checkResponse);
 }
 

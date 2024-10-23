@@ -18,7 +18,6 @@ function signIn() {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
@@ -31,9 +30,8 @@ const getUserInfo = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      authorization: `Bearer ${token}`,
     },
   }).then(checkResponse);
 };
