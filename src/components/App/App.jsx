@@ -15,8 +15,8 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { setToken, getToken } from "../../utils/token";
-import * as auth from "../../utils/auth";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import * as auth from "../../utils/auth";
 import * as api from "../../utils/api";
 
 function App() {
@@ -36,9 +36,10 @@ function App() {
     password: "",
     avatarUrl: "",
   });
+
   const [currentUser, setCurrentUser] = useState({
-    name: "",
     email: "",
+    password: "",
     avatarUrl: "",
     _id: "",
   });
@@ -46,16 +47,17 @@ function App() {
   const navigate = useNavigate();
 
   //const handleRegistration = ({ name, email, avatarUrl, password }) => {
-  //return auth
+  //auth
   //.signUp({ name, email, password, avatarUrl })
   //.then(() => {
   //setUserData(name, email, password, avatarUrl);
   //setCurrentUser(email, password);
   //setIsLoggedIn(true);
+  //e.preventDefault();
   //closeActiveModal();
-  //navigate("/profile");
+  // navigate("/profile");
   //})
-  //.catch(console.error);
+  //.catch((err) => console.error("Error setting data:", err));
   //};
 
   //const handleLogin = ({ email, password }) => {
@@ -85,7 +87,7 @@ function App() {
         handleLogin({ email, password });
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((err) => console.error("Error setting data:", err));
   };
 
   const handleLogin = ({ email, password }) => {
@@ -127,7 +129,7 @@ function App() {
         navigate("/profile");
       })
       .catch(console.error);
-  }, [navigate]);
+  }, []);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -234,6 +236,7 @@ function App() {
                 element={
                   <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
+                      weatherData={weatherData}
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}

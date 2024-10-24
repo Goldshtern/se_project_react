@@ -2,7 +2,7 @@ import { checkResponse } from "./api";
 
 const baseUrl = "http://localhost:3001";
 
-function signUp(name, avatarUrl, email, password) {
+function signUp({ name, avatarUrl, email, password }) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -14,11 +14,12 @@ function signUp(name, avatarUrl, email, password) {
 
 export { signUp };
 
-function signIn() {
+function signIn({ email, password }) {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      //Accept: "application/json",
     },
     body: JSON.stringify({ email, password }),
   }).then(checkResponse);

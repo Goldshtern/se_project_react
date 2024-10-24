@@ -17,7 +17,7 @@ function getItems() {
 
 export { getItems };
 
-function postItems({ name, imageUrl, weather }, token) {
+function postItems(name, imageUrl, weather, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
