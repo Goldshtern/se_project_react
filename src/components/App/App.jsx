@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -10,7 +10,6 @@ import { coordinates, APIkey } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { getItems, postItems, deleteItems } from "../../utils/api";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -30,55 +29,14 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    avatarUrl: "",
-  });
-
   const [currentUser, setCurrentUser] = useState({
+    name: "",
+    avatar: "",
     email: "",
-    password: "",
-    avatarUrl: "",
     _id: "",
   });
 
   const navigate = useNavigate();
-
-  //const handleRegistration = ({ name, email, avatarUrl, password }) => {
-  //auth
-  //.signUp({ name, email, password, avatarUrl })
-  //.then(() => {
-  //setUserData(name, email, password, avatarUrl);
-  //setCurrentUser(email, password);
-  //setIsLoggedIn(true);
-  //e.preventDefault();
-  //closeActiveModal();
-  // navigate("/profile");
-  //})
-  //.catch((err) => console.error("Error setting data:", err));
-  //};
-
-  //const handleLogin = ({ email, password }) => {
-  //if (!email || !password) {
-  //return;
-  //}
-
-  //auth
-  //.signIn({ email, password })
-  //.then((data) => {
-  //console.log("this is the data", data);
-  //if (data.token) {
-  //setToken(data.token);
-  //setCurrentUser(userData);
-  // setIsLoggedIn(true);
-  //closeActiveModal();
-  //navigate("/profile");
-  //}
-  //})
-  //.catch(console.error);
-  //};
 
   const handleRegistration = ({ name, avatarUrl, email, password }) => {
     return auth
@@ -115,22 +73,6 @@ function App() {
       });
   };
 
-  useEffect(() => {
-    const jwt = getToken();
-
-    if (!jwt) {
-      return;
-    }
-    auth
-      .getUserInfo(jwt)
-      .then((user) => {
-        setIsLoggedIn(true);
-        setCurrentUser(user.data);
-        navigate("/profile");
-      })
-      .catch(console.error);
-  }, []);
-
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -138,10 +80,6 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
-  };
-
-  const closeActiveModal = () => {
-    setActiveModal("");
   };
 
   const handleLoginClick = () => {
@@ -186,6 +124,26 @@ function App() {
       .catch((e) => console.error(e));
   };
 
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
+  useEffect(() => {
+    const jwt = getToken();
+
+    if (!jwt) {
+      return;
+    }
+    auth
+      .getUserInfo(jwt)
+      .then((user) => {
+        setIsLoggedIn(true);
+        setCurrentUser(user);
+        navigate("/profile");
+      })
+      .catch(console.error);
+  }, []);
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -200,7 +158,7 @@ function App() {
       .getItems()
       .then((data) => {
         console.log(data);
-        setClothingItems(data);
+        setClothingItems(data.clothingItems);
       })
       .catch(console.error);
   }, []);

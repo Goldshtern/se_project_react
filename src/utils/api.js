@@ -10,9 +10,7 @@ function checkResponse(res) {
 export { checkResponse };
 
 function getItems() {
-  return fetch(`${baseUrl}/items`, {
-    headers: { "Content-Type": "application/json" },
-  }).then(checkResponse);
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 
 export { getItems };
@@ -34,8 +32,9 @@ function postItems(name, imageUrl, weather, token) {
 
 export { postItems };
 
-function deleteItems(item, token) {
-  return fetch(`${baseUrl}/items/${item._id}`, {
+function deleteItems(_id, token) {
+  console.log(_id);
+  return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,

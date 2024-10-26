@@ -1,7 +1,6 @@
 import "./ItemModal.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
-//import closeBtn from "../../assets/cls-btn.svg";
 
 function ItemModal({ activeModal, onClose, card, handleDeleteItem }) {
   const currentUser = useContext(CurrentUserContext);
@@ -32,6 +31,7 @@ function ItemModal({ activeModal, onClose, card, handleDeleteItem }) {
           <button
             //className="modal__delete-btn"
             //onClick={() => handleDeleteItem(card) && onClose}
+            type="button"
             className={itemDeleteButtonClassName}
             onClick={handleDeleteClick}
           >
