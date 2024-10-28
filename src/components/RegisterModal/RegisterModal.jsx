@@ -19,16 +19,16 @@ const Register = ({
   //return null;
   //}
 
-  const isFormValid = () => {
-    return data.email && data.password && data.name && data.avatarUrl;
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const isFormValid = () => {
+    return data.email && data.password && data.name && data.avatarUrl;
   };
 
   const handleSubmit = (e) => {
