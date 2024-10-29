@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./EditProfileModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { useContext } from "react";
 
-const EditProfile = ({ onClose, isOpen }) => {
+const EditProfile = ({ onClose, isOpen, handleEditUser }) => {
   const currentUser = useContext(CurrentUserContext);
 
   const [data, setData] = useState({
     name: currentUser || "",
     avatarUrl: "",
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      setData({
+        name: currentUser.name || "",
+        avatarUrl: currentUser.avatarUrl || "",
+      });
+    }
+  }, [isOpen, currentUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,8 +27,10 @@ const EditProfile = ({ onClose, isOpen }) => {
       [name]: value,
     }));
   };
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    handleEditUser(data);
+    console.log(handleSubmit);
   };
 
   const isFormValid = () => {
@@ -30,25 +40,24 @@ const EditProfile = ({ onClose, isOpen }) => {
   return (
     <ModalWithForm
       title="Change profile data"
-      buttonText="Change profile data"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
       <label htmlFor="name" className="modal__label-form">
-        Name
+        Name*{" "}
         <input
           type="text"
           className="modal__input"
           id="name"
-          placeholder="Name"
+          placeholder={currentUser.name}
           name="name"
           value={data.name}
           onChange={handleChange}
         />
       </label>
       <label htmlFor="avatarUrl" className="modal__label-form">
-        Avatar URL{" "}
+        Avatar URL*{" "}
         <input
           type="link"
           className="modal__input"
