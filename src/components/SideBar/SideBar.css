@@ -6,16 +6,16 @@
   width: 56px;
   height: 56px;
   margin-right: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid #00000005;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #00000002;
 }
 
-.sidebar__username {
-  font-family: "CabinetGrotesk-Medium";
+.sidebar__user-name {
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
   font-size: 20px;
   font-weight: 700;
-  line-height: 24.8px;
+  line-height: 1.2;
   text-align: left;
 }
 
@@ -24,27 +24,11 @@
   flex-direction: column;
 }
 
-.sidebar__logout-btn {
-  font-family: "CabinetGrotesk-Medium";
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 24.8px;
-  text-align: left;
-  margin-top: 8px;
-  border: none;
-  background: none;
-  padding: 0;
-}
-
-.sidebar__logout-btn:hover {
-  cursor: pointer;
-}
-
 .sidebar__edit-profile-btn {
-  font-family: "CabinetGrotesk-Medium";
-  font-size: 18px;
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 24.8px;
+  line-height: 1.2;
   text-align: left;
   margin-bottom: 0;
   border: none;

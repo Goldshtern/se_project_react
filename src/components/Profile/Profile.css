@@ -1,7 +1,7 @@
 .profile {
   display: flex;
   gap: 75px;
-  font-family: Cabinet Grotesk, sans-serif;
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
   font-size: 20px;
-  font-weight: 550;
+  font-weight: 700;
 }

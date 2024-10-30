@@ -40,6 +40,7 @@ const EditProfile = ({ onClose, isOpen, handleEditUser }) => {
   return (
     <ModalWithForm
       title="Change profile data"
+      buttonText="Save changes"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
@@ -68,12 +69,6 @@ const EditProfile = ({ onClose, isOpen, handleEditUser }) => {
           onChange={handleChange}
         />
       </label>
-      <button
-        type="submit"
-        className={`register__link ${isFormValid() ? "active" : ""}`}
-      >
-        Save changes
-      </button>
     </ModalWithForm>
   );
 };
