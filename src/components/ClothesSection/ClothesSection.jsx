@@ -3,7 +3,12 @@ import ItemCard from "../ItemCard/ItemCard";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
+function ClothesSection({
+  onCardClick,
+  clothingItems,
+  handleAddClick,
+  onCardLike,
+}) {
   const currentUser = useContext(CurrentUserContext);
   console.log(currentUser);
   console.log(clothingItems);
@@ -27,7 +32,12 @@ function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
       <ul className="cards__list">
         {userItems.length > 0 ? (
           userItems.map((item) => (
-            <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+            <ItemCard
+              key={item._id}
+              item={item}
+              onCardClick={onCardClick}
+              onCardLike={onCardLike}
+            />
           ))
         ) : (
           <p className="clothes-items__title">No items found</p>

@@ -1,3 +1,4 @@
+import { getToken } from "./token";
 const baseUrl = "http://localhost:3001";
 
 function checkResponse(res) {
@@ -37,10 +38,38 @@ function deleteItems(_id, token) {
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
-      authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then(checkResponse);
 }
 
 export { deleteItems };
+
+function addCardLike(_id) {
+  console.log(_id);
+  const token = getToken();
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+}
+
+export { addCardLike };
+
+function removeCardLike(_id) {
+  console.log(_id);
+  const token = getToken();
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+}
+
+export { removeCardLike };
