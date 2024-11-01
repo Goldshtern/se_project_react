@@ -39,3 +39,7 @@
   background-color: #fff;
   color: #ff4d00;
 }
+
+.modal__delete-btn_hidden {
+  visibility: hidden;
+}

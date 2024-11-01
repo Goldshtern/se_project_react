@@ -4,22 +4,22 @@
   justify-content: center;
   max-width: 323px;
   max-height: 323px;
-  font-family: "Cabinet Grotesk", sans-serif;
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
 }
 
 .card__name {
   position: absolute;
   display: flex;
   top: 15px;
-  margin: 0;
-  padding: 2px 12px;
+  max-width: 73px;
+  max-height: 24px;
+  padding: 0 12px 0 12px;
+  margin: 0 10px 0 0;
   background-color: #fff;
   border-radius: 4px;
-  gap: 8px;
   font-weight: 700;
   font-size: 16px;
-  color: #000;
-  opacity: 60%;
+  line-height: 1.2;
 }
 
 .card__image {
@@ -32,13 +32,13 @@
   background-image: url("../../assets/like-btn.svg");
   position: absolute;
   left: 200px;
-  top: 20px;
+  top: 15px;
   width: 20px;
   height: 18px;
   border: none;
   background-repeat: no-repeat;
   cursor: pointer;
-  color: black;
+  color: #000;
   background-color: transparent;
 }
 

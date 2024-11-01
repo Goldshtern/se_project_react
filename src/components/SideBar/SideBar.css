@@ -51,3 +51,7 @@
   margin-bottom: 0;
   padding: 0;
 }
+
+.sidebar__logout-profile-btn {
+  cursor: pointer;
+}
