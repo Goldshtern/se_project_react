@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
-import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { coordinates, APIkey } from "../../utils/constants";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+
+import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import { coordinates, APIkey } from "../../utils/constants";
 import { setToken, getToken } from "../../utils/token";
+
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+
 import * as auth from "../../utils/auth";
 import * as api from "../../utils/api";
 
@@ -25,17 +29,17 @@ function App() {
     temp: { F: 999 },
     city: "",
   });
-  const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
     name: "",
     avatarUrl: "",
     email: "",
     _id: "",
   });
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
 
@@ -74,31 +78,13 @@ function App() {
       });
   };
 
-  const handleCardClick = (card) => {
-    setActiveModal("preview");
-    setSelectedCard(card);
-  };
+  const handleEditUser = ({ name, avatarUrl }) => {
+    const jwt = getToken();
 
-  const handleAddClick = () => {
-    setActiveModal("add-garment");
-  };
-
-  const handleLoginClick = () => {
-    setActiveModal("login");
-  };
-
-  const handleSignUpClick = () => {
-    setActiveModal("register");
-  };
-
-  const handleEditProfileClick = () => {
-    setActiveModal("edit-profile");
-  };
-
-  const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === "F"
-      ? setCurrentTemperatureUnit("C")
-      : setCurrentTemperatureUnit("F");
+    auth.updateCurrentUser({ name, avatarUrl }, jwt).then((res) => {
+      setCurrentUser(res);
+      closeActiveModal();
+    });
   };
 
   const handleAddItemSubmit = (item) => {
@@ -129,22 +115,10 @@ function App() {
       .catch((e) => console.error(e));
   };
 
-  const handleEditUser = ({ name, avatarUrl }) => {
-    const jwt = getToken();
-
-    auth.updateCurrentUser({ name, avatarUrl }, jwt).then((res) => {
-      setCurrentUser(res);
-      closeActiveModal();
-    });
-  };
-
   const handleCardLike = ({ _id, isLiked }) => {
     const jwt = localStorage.getItem("jwt");
-    // Check if this card is not currently liked
     !isLiked
-      ? // if so, send a request to add the user's id to the card's likes array
-        api
-          // the first argument is the card's id
+      ? api
           .addCardLike(_id, jwt)
           .then((updatedCard) => {
             setClothingItems((cards) =>
@@ -152,9 +126,7 @@ function App() {
             );
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-        api
-          // the first argument is the card's id
+      : api
           .removeCardLike(_id, jwt)
           .then((updatedCard) => {
             setClothingItems((cards) =>
@@ -164,8 +136,35 @@ function App() {
           .catch((err) => console.log(err));
   };
 
+  const handleSignUpClick = () => {
+    setActiveModal("register");
+  };
+
+  const handleLoginClick = () => {
+    setActiveModal("login");
+  };
+
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
+  };
+
+  const handleCardClick = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
+
+  const handleAddClick = () => {
+    setActiveModal("add-garment");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
   };
 
   useEffect(() => {
