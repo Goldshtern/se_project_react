@@ -39,3 +39,15 @@
 .sidebar__edit-profile-btn:hover {
   cursor: pointer;
 }
+
+.sidebar__logout-profile-btn {
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: left;
+  border: none;
+  background: none;
+  margin-bottom: 0;
+  padding: 0;
+}
