@@ -1,9 +1,8 @@
 import "./SideBar.css";
-//import avatar from "../../assets/avatar.png";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-function SideBar({ handleEditProfileClick }) {
+function SideBar({ handleEditProfileClick, handleSignOut }) {
   const currentUser = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
@@ -18,10 +17,18 @@ function SideBar({ handleEditProfileClick }) {
 
       <div className="sidebar__buttons-container">
         <button
+          type="button"
           className="sidebar__edit-profile-btn"
           onClick={handleEditProfileClick}
         >
           Change profile data
+        </button>
+        <button
+          type="button"
+          className="sidebar__logout-profile-btn"
+          onClick={handleSignOut}
+        >
+          Sign out
         </button>
       </div>
     </div>

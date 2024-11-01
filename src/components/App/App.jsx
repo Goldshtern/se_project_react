@@ -87,6 +87,13 @@ function App() {
     });
   };
 
+  const handleSignOut = ({ _id, token }) => {
+    localStorage.removeItem(token);
+    setIsLoggedIn(false);
+    setCurrentUser({ email: "", password: "" });
+    navigate("/");
+  };
+
   const handleAddItemSubmit = (item) => {
     const jwt = getToken();
 
@@ -239,6 +246,7 @@ function App() {
                       handleAddClick={handleAddClick}
                       handleEditProfileClick={handleEditProfileClick}
                       onCardLike={handleCardLike}
+                      handleSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
                 }
