@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-//import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -36,7 +35,6 @@ function Header({
         <button
           onClick={handleAddClick}
           type="button"
-          //className="header__add-clothes-btn"
           className={`header__add-clothes-button ${
             !isLoggedIn ? "header__add_button_hidden" : ""
           }`}

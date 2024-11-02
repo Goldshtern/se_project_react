@@ -8,14 +8,14 @@
 
 .register__link {
   border: none;
-  width: 73px;
+  width: 124px;
   height: 36px;
   margin: 0;
   padding: 0;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #0000003d;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -29,7 +29,7 @@
   font-size: 16px;
   font-weight: 700;
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.3);
+  color: #0000003d;
   background-color: #fff;
   border-radius: 4px;
   cursor: pointer;

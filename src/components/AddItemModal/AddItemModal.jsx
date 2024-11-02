@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import "./AddItemModal.css";
 const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
+  const [data, setData] = useState({
+    name: "",
+    imageUrl: "",
+    weather: "",
+  });
+
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -20,6 +27,10 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddItem({ name, imageUrl, weather });
+  };
+
+  const isFormValid = () => {
+    return data.name && data.imageUrl && data.weather;
   };
 
   return (
@@ -89,6 +100,12 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
           />
           Cold
         </label>
+        <button
+          type="submit"
+          className={`register__link ${isFormValid() ? "active" : ""}`}
+        >
+          Add garment
+        </button>
       </fieldset>
     </ModalWithForm>
   );

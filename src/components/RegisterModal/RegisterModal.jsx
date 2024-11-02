@@ -15,10 +15,6 @@ const Register = ({
     avatarUrl: "",
   });
 
-  //if (!isOpen) {
-  //return null;
-  //}
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({
@@ -40,7 +36,6 @@ const Register = ({
   return (
     <ModalWithForm
       title="Sign Up"
-      buttonText="Sign Up"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}

@@ -101,25 +101,22 @@ function App() {
       .postItems(item.name, item.imageUrl, item.weather, jwt)
       .then((newCard) => {
         setClothingItems([newCard, ...clothingItems]);
-        console.log(setClothingItems([newCard, ...clothingItems]));
         closeActiveModal();
       })
       .catch((err) => console.error("Error submitting:", err));
   };
 
-  const handleDeleteItem = (item) => {
+  const handleDeleteItem = (_id) => {
     const jwt = getToken();
-
     api
-      .deleteItems(item, jwt)
-      .then((res) => {
-        const newClothingItems = clothingItems.filter(
-          (cardItem) => cardItem._id !== item._id
+      .deleteItems(_id, jwt)
+      .then(() => {
+        setClothingItems((clothingItems) =>
+          clothingItems.filter((item) => item._id !== _id)
         );
-        setClothingItems(newClothingItems);
         closeActiveModal();
       })
-      .catch((e) => console.error(e));
+      .catch(console.error);
   };
 
   const handleCardLike = ({ _id, isLiked }) => {
@@ -245,7 +242,6 @@ function App() {
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
                       handleEditProfileClick={handleEditProfileClick}
-                      onCardLike={handleCardLike}
                       handleSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
