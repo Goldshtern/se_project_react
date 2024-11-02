@@ -242,6 +242,7 @@ function App() {
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
                       handleEditProfileClick={handleEditProfileClick}
+                      onCardLike={handleCardLike}
                       handleSignOut={handleSignOut}
                     />
                   </ProtectedRoute>

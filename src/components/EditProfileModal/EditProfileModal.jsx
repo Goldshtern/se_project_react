@@ -69,6 +69,12 @@ const EditProfile = ({ onClose, isOpen, handleEditUser }) => {
           onChange={handleChange}
         />
       </label>
+      <button
+        type="submit"
+        className={`register__link ${isFormValid() ? "active" : ""}`}
+      >
+        Save changes
+      </button>
     </ModalWithForm>
   );
 };
