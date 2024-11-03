@@ -14,6 +14,7 @@ const Register = ({
     password: "",
     avatarUrl: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +37,7 @@ const Register = ({
   return (
     <ModalWithForm
       title="Sign Up"
+      buttonText={isLoading ? "Registering..." : "Register"}
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}

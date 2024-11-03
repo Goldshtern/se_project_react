@@ -7,6 +7,7 @@ const Login = ({ onClose, isOpen, handleLogin, handleSignUpClick }) => {
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const isFormValid = () => {
     return data.email && data.password;
@@ -29,7 +30,7 @@ const Login = ({ onClose, isOpen, handleLogin, handleSignUpClick }) => {
   return (
     <ModalWithForm
       title="Login"
-      buttonText="Login"
+      buttonText={isLoading ? "Logging in..." : "Login"}
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}

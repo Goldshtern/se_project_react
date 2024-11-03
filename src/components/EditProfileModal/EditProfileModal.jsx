@@ -10,6 +10,7 @@ const EditProfile = ({ onClose, isOpen, handleEditUser }) => {
     name: currentUser || "",
     avatarUrl: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -40,7 +41,7 @@ const EditProfile = ({ onClose, isOpen, handleEditUser }) => {
   return (
     <ModalWithForm
       title="Change profile data"
-      buttonText="Save changes"
+      buttonText={isLoading ? "Saving..." : "Save"}
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
