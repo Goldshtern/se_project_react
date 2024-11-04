@@ -61,7 +61,7 @@ const Register = ({
         <input
           type="text"
           className="modal__input"
-          id="password-reg"
+          id="password"
           placeholder="Password"
           name="password"
           value={data.password}
