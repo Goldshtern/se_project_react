@@ -148,7 +148,6 @@ function App() {
             );
           })
           .catch((err) => console.error("Error liking card:", err))
-          .finally(() => setIsLoading(false))
       : api
           .removeCardLike(_id, jwt)
           .then((updatedCard) => {

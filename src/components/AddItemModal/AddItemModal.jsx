@@ -22,7 +22,9 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     onAddItem({ name, imageUrl, weather });
+    setIsLoading(false);
   };
 
   const isFormValid = () => {

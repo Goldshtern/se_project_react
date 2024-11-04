@@ -23,7 +23,9 @@ const Login = ({ onClose, isOpen, handleLogin, handleSignUpClick }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     handleLogin(data);
+    setIsLoading(false);
     console.log(handleSubmit);
   };
 
@@ -35,7 +37,7 @@ const Login = ({ onClose, isOpen, handleLogin, handleSignUpClick }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="email" className="modal__label-form">
+      <label className="modal__label-form">
         Email*{" "}
         <input
           type="email"
@@ -47,7 +49,7 @@ const Login = ({ onClose, isOpen, handleLogin, handleSignUpClick }) => {
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="password" className="modal__label-form">
+      <label className="modal__label-form">
         Password*{" "}
         <input
           type="text"

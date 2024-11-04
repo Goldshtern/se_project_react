@@ -30,7 +30,9 @@ const Register = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     handleRegistration(data);
+    setIsLoading(false);
     console.log(handleSubmit);
   };
 
@@ -59,7 +61,7 @@ const Register = ({
         <input
           type="text"
           className="modal__input"
-          id="password"
+          id="password-reg"
           placeholder="Password"
           name="password"
           value={data.password}
@@ -71,7 +73,7 @@ const Register = ({
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="name-reg"
           placeholder="Name"
           name="name"
           value={data.name}

@@ -30,7 +30,9 @@ const EditProfile = ({ onClose, isOpen, handleEditUser }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     handleEditUser(data);
+    setIsLoading(false);
     console.log(handleSubmit);
   };
 
@@ -46,19 +48,19 @@ const EditProfile = ({ onClose, isOpen, handleEditUser }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="name" className="modal__label-form">
+      <label className="modal__label-form">
         Name*{" "}
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="name-edit"
           placeholder={currentUser.name}
           name="name"
           value={data.name}
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="avatarUrl" className="modal__label-form">
+      <label className="modal__label-form">
         Avatar URL*{" "}
         <input
           type="link"
