@@ -1,9 +1,9 @@
 import { checkResponse } from "./api";
 
-const baseUrl = "http://localhost:3001";
+import { BASE_URL } from "../utils/constants";
 
 function signUp({ name, avatarUrl, email, password }) {
-  return fetch(`${baseUrl}/signup`, {
+  return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +15,7 @@ function signUp({ name, avatarUrl, email, password }) {
 export { signUp };
 
 function signIn({ email, password }) {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function signIn({ email, password }) {
 export { signIn };
 
 const getUserInfo = (token) => {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const getUserInfo = (token) => {
 export { getUserInfo };
 
 const updateCurrentUser = ({ name, avatarUrl }, token) => {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

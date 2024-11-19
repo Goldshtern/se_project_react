@@ -76,3 +76,8 @@ export const defaultWeatherOptions = {
     url: new URL("../assets/night/default.png", import.meta.url).href,
   },
 };
+
+export const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwrg.kalbas.com.vn"
+    : "http://localhost:3001";
